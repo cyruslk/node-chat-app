@@ -30,8 +30,17 @@ io.on("connection", (socket) => {
     io.emit("newMessage", {
       from: message.from,
       text: message.text,
-      createdAt: new Date().getTime();
+      createdAt: new Date().getTime()
     })
+
+    // this means that the client emiting does not receive the event
+    // but the other client are receiving
+    
+    // socket.broadcast.emit("newMessage", {
+    //   from: message.from,
+    //   text: message.text,
+    //   createdAt: new Date().getTime()
+    // })
 
   })
 
