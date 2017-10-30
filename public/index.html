@@ -11,21 +11,6 @@
 
     <!-- Here, we're initiating the client librairy -->
     <script src="/socket.io/socket.io.js"></script>
-
-    <script type="text/javascript">
-        // Here, we're initiating the request
-        // It creates a connexion and it stores the sockets in the variable socket
-        var socket = io();
-
-        // Here, we're listening to an event from the server.
-        socket.on("connect", ()=>{
-          console.log("New connection from the server!");
-        })
-
-        socket.on("disconnect", ()=>{
-          console.log("Disctonnected from server");
-        })
-    </script>
-
+    <script src="js/index.js" charset="utf-8"></script>
   </body>
 </html>
