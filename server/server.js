@@ -17,15 +17,22 @@ var io = socketIO(server);
 io.on("connection", (socket) => {
   console.log("New connection from the client!");
 
-  socket.emit("newMessage", {
-      form : "Hey",
-      text: "comes from the server!",
-      createdAt: new Date()
-    })
+  // socket.emit("newMessage", {
+  //     form : "Hey",
+  //     text: "comes from the server!",
+  //     createdAt: new Date()
+  //   })
 
   // Here, we're receiving a socket from the client
   socket.on("createMessage", (form, text) => {
     console.log("createEmail", form, text);
+
+    io.emit("newMessage", {
+      from: message.from,
+      text: message.text,
+      createdAt: new Date().getTime();
+    })
+
   })
 
   socket.on("disconnect", () => {
