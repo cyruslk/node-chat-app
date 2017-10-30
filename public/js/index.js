@@ -7,12 +7,8 @@ var socket = io();
 socket.on("connect", function() {
     console.log("New connection from the server!");
 
-    // Here, we created an event from the client to the server
-    socket.emit("createEmail", {
-      to: "toServer@gmail.com",
-      text: "heyyy"
-    })
-})
+});
+
 
 // these events are not directly linked to the one of the server
 socket.on("disconnect", function() {
@@ -20,12 +16,7 @@ socket.on("disconnect", function() {
 })
 
 
-// Here, we're listening to the newEmail event from the server.
-socket.on("newEmail", function(){
-  console.log("New email from the server!");
-} )
-
-// Here, we're passing the data of the server to the client
-socket.on("newEmail", function(data){
-  console.log(data);
-} )
+// Listening the newMessage event from server
+socket.on("newMessage", function(message){
+  console.log("Message received from the server:", message);
+})
