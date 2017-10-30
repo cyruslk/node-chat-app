@@ -6,9 +6,7 @@ var socket = io();
 // Avoid to use => otherwise it will crash on mobile.
 socket.on("connect", function() {
     console.log("New connection from the server!");
-
 });
-
 
 // these events are not directly linked to the one of the server
 socket.on("disconnect", function() {
@@ -19,4 +17,8 @@ socket.on("disconnect", function() {
 // Listening the newMessage event from server
 socket.on("newMessage", function(message){
   console.log("Message received from the server:", message);
+})
+
+socket.on("welcomeMessage", function(message){
+  console.log("Welcome to the chat!");
 })
