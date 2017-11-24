@@ -20,12 +20,20 @@ io.on("connection", (socket) => {
 
   // Here, we're receiving a socket from the client
 
+  // Socket.emit for admin text welcome the new user
+  socket.emit("newMessage", {
+    from: "Admin",
+    text: "Welcome to the app!",
+    createdAt: new Date().getTime()
+  });
 
-    // socket.broadcast.emit("newMessage", {
-    //   from: "Admin",
-    //   text: "New user connected",
-    //   createdAt: new Date().getTime()
-    // });
+  // broadcasting an event
+  socket.broadcast.emit("newMessage", {
+    from: "Admin",
+    text: "New user joined",
+    createdAt: new Date().getTime()
+  });
+
 
     socket.on("createMessage", (message) => {
       console.log("createMessage", message);
@@ -36,8 +44,14 @@ io.on("connection", (socket) => {
         createdAt: new Date().getTime()
       })
 
+      // Here, we're broadcasting to everybody but this socket.
 
-  })
+    //   socket.broadcast.emit("newMessage", {
+    //     from: message.from,
+    //     text: message.text,
+    //     createdAt: new Date().getTime()
+    //   })
+    })
 
   socket.on("disconnect", () => {
     console.log("New disconnection from the client!");

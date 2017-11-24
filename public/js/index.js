@@ -16,5 +16,5 @@ socket.on("disconnect", function() {
 
 // Listening the newMessage event from server
 socket.on("newMessage", function(message){
-  console.log("Message received from the server:", message.from);
+  console.log("Message received from the server:", message);
 })
