@@ -20,26 +20,22 @@ io.on("connection", (socket) => {
 
   // Here, we're receiving a socket from the client
 
-    // Send a message to every new user
-    socket.emit("newMessage", {
-      from: "Admin",
-      text: "Welcome to the chat app!",
-      createdAt: new Date().getTime()
-     });
 
-    socket.broadcast.emit("newMessage", {
-      from: "Admin",
-      text: "New user connected",
-      createdAt: new Date().getTime()
-    });
+    // socket.broadcast.emit("newMessage", {
+    //   from: "Admin",
+    //   text: "New user connected",
+    //   createdAt: new Date().getTime()
+    // });
 
-    socket.on("createMessage", (form, text) => {
-      // console.log("createEmail", form, text);
+    socket.on("createMessage", (message) => {
+      console.log("createMessage", message);
+
       io.emit("newMessage", {
         from: message.from,
         text: message.text,
         createdAt: new Date().getTime()
       })
+
 
   })
 
