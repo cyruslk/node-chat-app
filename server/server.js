@@ -18,13 +18,17 @@ io.on("connection", (socket) => {
   console.log("New connection from the client!");
 
     socket.emit("newMessage", generateMessage("Admin", "Welcome to the chat app"));
-    socket.emit("newMessage", generateMessage("Admin", "New User joined"));
+    socket.broadcast.emit("newMessage", generateMessage("Admin", "New User joined"));
 
     socket.on("createMessage", (message, callback) => {
       console.log("createMessage", message);
       io.emit("newMessage", generateMessage(message.from, message.text));
       callback("This is from the server!");
 
+    })
+
+    socket.on("createLocationMessage", (coords) =>{
+      io.emit("newMessage", generateMessage("Admin", `${coords.latitude}, ${coords.latitude}`));
     })
 
   socket.on("disconnect", () => {
