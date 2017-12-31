@@ -24,7 +24,7 @@ io.on("connection", (socket) => {
 
       console.log("createMessage", message);
       var text = message.text;
-      var textArray = text.split(" ").reverse().join('');
+      var textArray = text.split("").reverse().join('');
 
 
 
