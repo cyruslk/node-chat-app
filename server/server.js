@@ -28,8 +28,8 @@ io.on("connection", (socket) => {
       var appVersionSplitted = message.dataObj.appVersion.split(" ");
       // console.log(appVersionSplitted);
       // console.log(appVersionSplitted[0]);
-      // var randomWord = Math.floor(Math.random()*appVersionSplitted.length);
-      // console.log(randomWord);
+      var randomWord = Math.floor(Math.random()*appVersionSplitted.length);
+      console.log("here" , appVersionSplitted[randomWord]);
 
 
       var text = message.text;
