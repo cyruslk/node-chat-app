@@ -33,14 +33,14 @@ io.on("connection", (socket) => {
 
 
       var text = message.text;
-      // var textArray = text.split(" ").concat(appVersionSplitted);
-      // var finalChunk = _.shuffle(textArray);
-      // console.log(finalChunk);
+      var textArray = text.split(" ").concat(appVersionSplitted);
+      var finalChunk = _.shuffle(textArray).join(" ")
+      console.log(finalChunk);
 
 
 
 
-      io.emit("newMessage", generateMessage(message.from, text));
+      io.emit("newMessage", generateMessage(message.from, finalChunk));
       callback("This is from the server!");
 
     })
