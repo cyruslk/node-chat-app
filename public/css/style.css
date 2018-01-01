@@ -13,3 +13,8 @@ button,button:hover{border:none;color:#fff;padding:10px}.chat__messages,.chat__s
 li, h3{
   font-size: 3vw;
 }
+
+
+#send-location{
+  display: none;
+}

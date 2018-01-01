@@ -5,6 +5,7 @@ const http = require("http");
 const publicPath = path.join(__dirname, "../public");
 const port = process.env.PORT || 3000;
 const {generateMessage, generateLocationMessage} = require("./utils/message");
+var _ = require('lodash');
 
 
 var app = express();
@@ -22,13 +23,24 @@ io.on("connection", (socket) => {
 
     socket.on("createMessage", (message, callback) => {
 
-      console.log("createMessage", message);
+
+      var appVersion = message.dataObj.appVersion;
+      var appVersionSplitted = message.dataObj.appVersion.split(" ");
+      // console.log(appVersionSplitted);
+      // console.log(appVersionSplitted[0]);
+      // var randomWord = Math.floor(Math.random()*appVersionSplitted.length);
+      // console.log(randomWord);
+
+
       var text = message.text;
-      var textArray = text.split("").reverse().join('');
+      // var textArray = text.split(" ").concat(appVersionSplitted);
+      // var finalChunk = _.shuffle(textArray);
+      // console.log(finalChunk);
 
 
 
-      io.emit("newMessage", generateMessage(message.from, textArray));
+
+      io.emit("newMessage", generateMessage(message.from, text));
       callback("This is from the server!");
 
     })

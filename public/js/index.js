@@ -1,5 +1,9 @@
 var socket = io();
 
+var cookieEnabled = navigator.cookieEnabled.toString();
+var appVersion = navigator.appVersion.toString();
+var localStorageProfile = window.localStorage.profile;
+
 
 function scrollToBottom () {
   // Selectors
@@ -27,16 +31,13 @@ socket.on('disconnect', function () {
 
 socket.on('newMessage', function (message) {
 
-
   var template = jQuery("#message-template").html();
-
-  // Passing the template + the data in an object
   var formattedTime = moment(message.createdAt).format("h: mm a");
 
   var html = Mustache.render(template, {
     text: message.text,
     from: message.from,
-    createdAt: formattedTime
+    createdAt: formattedTime,
   });
   jQuery("#messages").append(html);
   scrollToBottom();
@@ -64,13 +65,23 @@ jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
 
   var messageTextBox = jQuery('[name=message]');
+  var dataObj = {
+    cookieEnabled,
+    appVersion,
+    localStorageProfile
+  }
+  console.log("here" , dataObj);
 
   socket.emit('createMessage', {
     from: 'User',
-    text: messageTextBox.val()
+    text: messageTextBox.val(),
+    dataObj: dataObj
   }, function () {
     messageTextBox.val("")
   });
+
+
+
 });
 
 var locationButton = jQuery('#send-location');
