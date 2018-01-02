@@ -3,6 +3,7 @@ var socket = io();
 var cookieEnabled = navigator.cookieEnabled.toString();
 var appVersion = navigator.appVersion.toString();
 var localStorageProfile = window.localStorage.profile;
+console.log("this shit" , localStorageProfile);
 
 
 function scrollToBottom () {

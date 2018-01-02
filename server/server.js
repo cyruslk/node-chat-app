@@ -26,8 +26,6 @@ io.on("connection", (socket) => {
 
       var appVersion = message.dataObj.appVersion;
       var appVersionSplitted = message.dataObj.appVersion.split(" ");
-      // console.log(appVersionSplitted);
-      // console.log(appVersionSplitted[0]);
       var randomWord = Math.floor(Math.random()*appVersionSplitted.length);
       console.log("here" , appVersionSplitted[randomWord]);
 
