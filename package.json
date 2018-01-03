@@ -15,9 +15,11 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "geoip-lite": "^1.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
     "nodemon": "^1.10.2",
+    "retrieve-ip": "^1.1.1",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {

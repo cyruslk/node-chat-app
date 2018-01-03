@@ -8,6 +8,9 @@
 
   <body class="chat">
 
+
+    <!-- <p>Where are you?</p> -->
+
     <div id="chat__sidebar">
       <h3>People</h3>
       <div id="users"></div>
@@ -62,5 +65,12 @@
     <script src="/js/libs/moment.js"></script>
     <script src="/js/libs/mustache.js"></script>
     <script src="js/index.js" charset="utf-8"></script>
+
+    <script>
+        $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+      console.log(JSON.stringify(data, null, 2));
+    });
+    </script>
+
   </body>
 </html>

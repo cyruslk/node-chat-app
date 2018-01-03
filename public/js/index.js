@@ -6,6 +6,11 @@ var localStorageProfile = window.localStorage.profile;
 console.log("this shit" , localStorageProfile);
 
 
+// var ip = "207.97.227.239";
+// var geo = geoip.lookup(ip);
+// console.log("this shit", geo);
+
+
 function scrollToBottom () {
   // Selectors
   var messages = jQuery('#messages');
