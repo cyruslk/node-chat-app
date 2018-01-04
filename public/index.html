@@ -9,12 +9,41 @@
   <body class="chat">
 
 
-    <!-- <p>Where are you?</p> -->
+    <div id="chat_typed_container">
+      <div id="first" class="chat_typed_info">
+        <div class="from-me">
+           <p>Hey there!</p>
+         </div>
+      </div>
+      <div id="second" class="chat_typed_info fade-in">
+        <div class="from-me">
+           <p>Welcome to the chat.</p>
+         </div>
+      </div>
+      <div id="third" class="chat_typed_info fade-in">
+        <div class="from-me">
+          <p>You're IP address is 96.127.206.83</p>
+         </div>
+      </div>
+      <div id="fourth" class="chat_typed_info fade-in">
+        <div class="from-me">
+          <p>Oh. And your coordonates are 45.6167,-73.75</p>
+         </div>
+      </div>
+      <div id="fifth" class="chat_typed_info fade-in">
+        <div class="from-me">
+           <p>So...Are you based in Quebec?</p>
+         </div>
+      </div>
+    </div>
+
 
     <div id="chat__sidebar">
       <h3>People</h3>
       <div id="users"></div>
     </div>
+
+
 
     <div class="chat__main">
 
@@ -31,6 +60,25 @@
     </div>
 
 
+    <script id="popup_template" type="text/template">
+
+    <div id="chat_typed_container">
+      <div class="chat_typed_info">
+        <div class="from-me">
+           <p>Hey there</p>
+         </div>
+      </div>
+      <div class="chat_typed_info">
+        <div class="from-me">
+           <p>Welcome to the chat.</p>
+         </div>
+      </div>
+    </div>
+
+  </script>
+
+
+
     <script id="message-template" type="text/template">
 
         <li class="message">
@@ -43,6 +91,8 @@
           </div>
         </li>
     </script>
+
+
 
 
     <script id="location-message-template" type="text/template">
@@ -66,7 +116,9 @@
     <script src="/js/libs/mustache.js"></script>
     <script src="js/index.js" charset="utf-8"></script>
 
+
     <script>
+
         $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
       console.log(JSON.stringify(data, null, 2));
     });

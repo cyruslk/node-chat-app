@@ -18,3 +18,93 @@ li, h3{
 #send-location{
   display: none;
 }
+
+
+#chat_typed_container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 1vw;
+  align-items: flex-end;
+  top: 1vw;
+}
+
+
+#chat_typed_container p{
+  font-size: 2vw;
+  font-family: Arial Narrow,Arial,sans-serif;
+}
+
+
+#chat_typed_container div{
+  /* display: none; */
+}
+
+#chat_typed_container div:first-child{
+  display: block;
+}
+
+.from-me {
+  position: relative;
+  padding: 10px 20px;
+  color: white;
+  background: #0B93F6;
+  border-radius: 25px;
+  float: right;
+  margin-top: 0.3vw;
+  width: 100%;
+}
+
+
+
+/* #first{
+  -webkit-animation-delay: 2s;
+-moz-animation-delay: 2s;
+animation-delay: 2s;
+} */
+
+#second{
+  -webkit-animation-delay: 12s;
+-moz-animation-delay: 12s;
+animation-delay: 12s;
+}
+
+#third{
+  -webkit-animation-delay: 24s;
+-moz-animation-delay: 24s;
+animation-delay: 24s;
+}
+
+#fourth{
+  -webkit-animation-delay: 36s;
+-moz-animation-delay: 36s;
+animation-delay: 36s;
+}
+
+#fifth{
+  -webkit-animation-delay: 48s;
+-moz-animation-delay: 48s;
+animation-delay: 48s;
+}
+
+
+
+.fade-in {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;
+}
+
+
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
