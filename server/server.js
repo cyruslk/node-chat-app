@@ -24,7 +24,14 @@ request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, respo
   var bodyObj = JSON.parse(body);
   console.log(bodyObj.geoplugin_request);
 
+  app.get('/ip_info', function(req,res) {
+     var dataToSendObj = { bodyObj };
+     res.render('ip_info',dataToSendObj);
+  });
+
 });
+
+
 
 
 
@@ -47,8 +54,6 @@ io.on("connection", (socket) => {
       var textArray = text.split(" ").concat(appVersionSplitted);
       var finalChunk = _.shuffle(textArray).join(" ")
       console.log(finalChunk);
-
-
 
 
       io.emit("newMessage", generateMessage(message.from, finalChunk));
