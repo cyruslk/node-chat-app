@@ -5,6 +5,7 @@ const http = require("http");
 const publicPath = path.join(__dirname, "../public");
 const port = process.env.PORT || 3000;
 const {generateMessage, generateLocationMessage} = require("./utils/message");
+const {isRealString} = require("./utils/validation")
 var _ = require('lodash');
 var request = require("request");
 
@@ -15,8 +16,6 @@ var server = http.createServer(app);
 
 var io = socketIO(server);
 
-
-
 request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
   // console.log('error:', error); // Print the error if one occurred
   // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
@@ -24,10 +23,19 @@ request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, respo
   var bodyObj = JSON.parse(body);
   console.log(bodyObj.geoplugin_request);
 
-  app.get('/ip_info', function(req,res) {
-     var dataToSendObj = { bodyObj };
-     res.render('ip_info',dataToSendObj);
   });
+
+// io.emit('ipMessage', {
+//     ipMessage: ipMessage
+//
+// });
+
+request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
+  // console.log('error:', error); // Print the error if one occurred
+  // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+  var bodyObj = JSON.parse(body);
+  console.log(bodyObj.geoplugin_request);
 
 });
 
@@ -40,6 +48,16 @@ io.on("connection", (socket) => {
 
     // socket.emit("newMessage", generateMessage("Admin", "Welcome to the chat!"));
     // socket.broadcast.emit("newMessage", generateMessage("Admin", "New User joined"));
+
+
+    socket.on('join', (params, callback) => {
+      if (!isRealString(params.name) || !isRealString(params.room)) {
+        callback('Name and room name are required.');
+      }
+
+      callback();
+    });
+
 
     socket.on("createMessage", (message, callback) => {
 
