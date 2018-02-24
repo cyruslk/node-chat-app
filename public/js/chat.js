@@ -44,34 +44,44 @@ socket.on('newMessage', function (message) {
   var template = jQuery("#message-template").html();
   var formattedTime = moment(message.createdAt).format("h: mm a");
 
+
   var html = Mustache.render(template, {
     text: message.text,
     from: message.from,
     createdAt: formattedTime,
+    buffer: message.buffer
   });
   jQuery("#messages").append(html);
   scrollToBottom();
 
+  console.log("here", message.buffer);
+
+  console.log(jQuery(".message__body").css('color',  message.buffer));
+  // console.log("here", message);
+
+
+
 });
 
 
-
-socket.on('newLocationMessage', function (message) {
-
-
-  var template = jQuery("#location-message-template").html();
-  var formattedTime = moment(message.createdAt).format("h: mm a")
-
-  var html = Mustache.render(template, {
-    from: message.from,
-    url: message.url,
-    createdAt: formattedTime
-  });
-
-  jQuery("#messages").append(html);
-  scrollToBottom();
-
-});
+//
+//
+// socket.on('newLocationMessage', function (message) {
+//
+//
+//   var template = jQuery("#location-message-template").html();
+//   var formattedTime = moment(message.createdAt).format("h: mm a")
+//
+//   var html = Mustache.render(template, {
+//     from: message.from,
+//     url: message.url,
+//     createdAt: formattedTime
+//   });
+//
+//   jQuery("#messages").append(html);
+//   scrollToBottom();
+//
+// });
 
 jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();
@@ -103,10 +113,8 @@ locationButton.on('click', function () {
 
 
   locationButton.attr("disabled", "disabled").text("Sending location ...");
-
   navigator.geolocation.getCurrentPosition(function (position) {
-
-    locationButton.removeAttr("disabled").text("Send location")
+  locationButton.removeAttr("disabled").text("Send location")
 
 
     socket.emit('createLocationMessage', {

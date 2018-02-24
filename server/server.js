@@ -8,6 +8,7 @@ const {generateMessage, generateLocationMessage} = require("./utils/message");
 const {isRealString} = require("./utils/validation")
 var _ = require('lodash');
 var request = require("request");
+var conv = require('binstring');
 
 
 
@@ -15,6 +16,7 @@ var app = express();
 var server = http.createServer(app);
 
 var io = socketIO(server);
+
 
 request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
   // console.log('error:', error); // Print the error if one occurred
@@ -42,7 +44,6 @@ request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, respo
 
 
 
-
 io.on("connection", (socket) => {
   console.log("New connection from the client!");
 
@@ -50,31 +51,38 @@ io.on("connection", (socket) => {
     // socket.broadcast.emit("newMessage", generateMessage("Admin", "New User joined"));
 
 
-    socket.on('join', (params, callback) => {
-      if (!isRealString(params.name) || !isRealString(params.room)) {
-        callback('Name and room name are required.');
-      }
-
-      callback();
-    });
+    // socket.on('join', (params, callback) => {
+    //   if (!isRealString(params.name) || !isRealString(params.room)) {
+    //     callback('Name and room name are required.');
+    //   }
+    //
+    //   callback();
+    // });
 
 
     socket.on("createMessage", (message, callback) => {
 
 
+
+
       var appVersion = message.dataObj.appVersion;
       var appVersionSplitted = message.dataObj.appVersion.split(" ");
       var randomWord = Math.floor(Math.random()*appVersionSplitted.length);
-      console.log("here" , appVersionSplitted[randomWord]);
-
+      // console.log("here" , appVersionSplitted[randomWord]);
 
       var text = message.text;
+
       var textArray = text.split(" ").concat(appVersionSplitted);
       var finalChunk = _.shuffle(textArray).join(" ")
+
       console.log(finalChunk);
+      var buffer = "black"
+
+      // var buf = conv(text, { in:'binary' })
+      // console.log("BUFFER", buf);
 
 
-      io.emit("newMessage", generateMessage(message.from, finalChunk));
+      io.emit("newMessage", generateMessage(message.from, finalChunk, buffer));
       callback("This is from the server!");
 
     })
