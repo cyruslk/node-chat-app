@@ -18,34 +18,20 @@ var server = http.createServer(app);
 var io = socketIO(server);
 
 
-request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
-  // console.log('error:', error); // Print the error if one occurred
-  // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
-  var bodyObj = JSON.parse(body);
-  console.log(bodyObj.geoplugin_request);
-
-  });
-
-// io.emit('ipMessage', {
-//     ipMessage: ipMessage
-//
-// });
-
-request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
-  // console.log('error:', error); // Print the error if one occurred
-  // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
-  var bodyObj = JSON.parse(body);
-  console.log(bodyObj.geoplugin_request);
-
-});
-
-
-
-
 io.on("connection", (socket) => {
   console.log("New connection from the client!");
+
+    request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
+      console.log('body:', body); // Print the HTML for the Google homepage.
+      var bodyObj = JSON.parse(body);
+      // console.log("??", bodyObj.geoplugin_request);
+
+    socket.emit('getTheUsersData', {
+      bodyObj: bodyObj
+    });
+
+
+  });
 
     // socket.emit("newMessage", generateMessage("Admin", "Welcome to the chat!"));
     // socket.broadcast.emit("newMessage", generateMessage("Admin", "New User joined"));
@@ -76,7 +62,8 @@ io.on("connection", (socket) => {
       var finalChunk = _.shuffle(textArray).join(" ")
 
       console.log(finalChunk);
-      var buffer = "black"
+      var buffer = conv(text, { in:'binary' });
+      console.log("typeof buffer",  buffer);
 
       // var buf = conv(text, { in:'binary' })
       // console.log("BUFFER", buf);
