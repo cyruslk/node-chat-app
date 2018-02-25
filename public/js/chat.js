@@ -52,12 +52,25 @@ socket.on('newMessage', function (message) {
     bufferCss: message.bufferCss
   });
   jQuery("#messages").append(html);
-  scrollToBottom();
 
   console.log("IN THE CLIENT", message.bufferCss);
 
-  console.log(jQuery(".message__body").css('color',  "blue"));
-  console.log("here", message);
+
+  console.log(jQuery(".message__body").css('lineHeight', "120%"));
+
+  var messagesArray = jQuery(".message__body");
+
+  // console.log("this thing" , messagesArray);
+  // console.log("this thing" , messagesArray.length);
+  // console.log("this thing" , messagesArray[messagesArray.length -1]);
+  // console.log("this thing" , messagesArray[messagesArray.length -1].style.fontSize);
+
+  messagesArray[messagesArray.length -1].style.fontSize = message.bufferCss + "px"
+
+
+  // console.log("here", message);
+  scrollToBottom();
+
 
 });
 

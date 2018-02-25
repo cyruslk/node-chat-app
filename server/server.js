@@ -61,8 +61,8 @@ io.on("connection", (socket) => {
 
       var text = message.text;
 
-      var textArray = text.split(" ").concat(appVersionSplitted);
-      var finalChunk = _.shuffle(textArray).join(" ")
+      // var textArray = text.split(" ").concat(appVersionSplitted);
+      // var finalChunk = _.shuffle(textArray).join(" ")
 
       // console.log(finalChunk);
 
@@ -78,7 +78,7 @@ io.on("connection", (socket) => {
       var bufferCss = arraySum
 
 
-      io.emit("newMessage", generateMessage(message.from, finalChunk, bufferCss));
+      io.emit("newMessage", generateMessage(message.from, text, bufferCss));
       callback("This is from the server!");
 
     })
