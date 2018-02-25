@@ -87,6 +87,13 @@ animation-delay: 36s;
 animation-delay: 48s;
 }
 
+#sixth{
+  -webkit-animation-delay: 60s;
+-moz-animation-delay: 60s;
+animation-delay: 60s;
+}
+
+
 
 
 .fade-in {
