@@ -49,19 +49,54 @@ socket.on('newMessage', function (message) {
     text: message.text,
     from: message.from,
     createdAt: formattedTime,
-    buffer: message.buffer
+    bufferCss: message.bufferCss
   });
   jQuery("#messages").append(html);
   scrollToBottom();
 
-  console.log("here", message.buffer);
+  console.log("IN THE CLIENT", message.bufferCss);
 
-  console.log(jQuery(".message__body").css('color',  message.buffer));
-  // console.log("here", message);
-
-
+  console.log(jQuery(".message__body").css('color',  "blue"));
+  console.log("here", message);
 
 });
+
+
+socket.on('getTheUsersData', function (message) {
+
+
+  console.log("this is from the client", message.bodyObj);
+
+    var template = jQuery("#ip-info-template").html();
+    var formattedTime = moment(message.createdAt).format("h: mm a");
+
+    var html = Mustache.render(template, {
+      createdAt: formattedTime,
+      data: message.bodyObj
+    });
+
+    jQuery("#messages").append(html);
+
+});
+
+
+// socket.on('newLocationMessage', function (message) {
+//
+//
+//   var template = jQuery("#location-message-template").html();
+//   var formattedTime = moment(message.createdAt).format("h: mm a")
+//
+//   var html = Mustache.render(template, {
+//     from: message.from,
+//     url: message.url,
+//     createdAt: formattedTime
+//   });
+//
+//   jQuery("#messages").append(html);
+//   scrollToBottom();
+//
+// });
+
 
 
 //

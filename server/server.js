@@ -21,9 +21,9 @@ var io = socketIO(server);
 request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
   // console.log('error:', error); // Print the error if one occurred
   // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
+  // console.log('body:', body); // Print the HTML for the Google homepage.
   var bodyObj = JSON.parse(body);
-  console.log(bodyObj.geoplugin_request);
+  // console.log(bodyObj.geoplugin_request);
 
   });
 
@@ -32,14 +32,6 @@ request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, respo
 //
 // });
 
-request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
-  // console.log('error:', error); // Print the error if one occurred
-  // console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
-  var bodyObj = JSON.parse(body);
-  console.log(bodyObj.geoplugin_request);
-
-});
 
 
 
@@ -62,9 +54,6 @@ io.on("connection", (socket) => {
 
     socket.on("createMessage", (message, callback) => {
 
-
-
-
       var appVersion = message.dataObj.appVersion;
       var appVersionSplitted = message.dataObj.appVersion.split(" ");
       var randomWord = Math.floor(Math.random()*appVersionSplitted.length);
@@ -75,14 +64,21 @@ io.on("connection", (socket) => {
       var textArray = text.split(" ").concat(appVersionSplitted);
       var finalChunk = _.shuffle(textArray).join(" ")
 
-      console.log(finalChunk);
-      var buffer = "black"
+      // console.log(finalChunk);
 
-      // var buf = conv(text, { in:'binary' })
-      // console.log("BUFFER", buf);
+      var buf = conv(text, { in:'binary' })
+      console.log("BUFFER", buf);
+      var arr = Array.prototype.slice.call(buf, 0)
+      arr = [...buf]
+      console.log(arr);
+
+      var arraySum = arr.reduce((a, b) => a + b, 0);
+      console.log("this is the arraySum", arraySum);
+
+      var bufferCss = arraySum
 
 
-      io.emit("newMessage", generateMessage(message.from, finalChunk, buffer));
+      io.emit("newMessage", generateMessage(message.from, finalChunk, bufferCss));
       callback("This is from the server!");
 
     })
