@@ -70,6 +70,8 @@ io.on("connection", (socket) => {
       console.log("BUFFER", buf);
       var arr = Array.prototype.slice.call(buf, 0)
       arr = [...buf]
+      arrToString = arr.join(" ");
+      console.log("this the arrToString", arrToString);
       console.log(arr);
 
       var arraySum = arr.reduce((a, b) => a + b, 0);
@@ -78,7 +80,7 @@ io.on("connection", (socket) => {
       var bufferCss = arraySum
 
 
-      io.emit("newMessage", generateMessage(message.from, text, bufferCss));
+      io.emit("newMessage", generateMessage(message.from, text, bufferCss, arrToString));
       callback("This is from the server!");
 
     })

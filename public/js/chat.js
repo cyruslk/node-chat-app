@@ -49,7 +49,8 @@ socket.on('newMessage', function (message) {
     text: message.text,
     from: message.from,
     createdAt: formattedTime,
-    bufferCss: message.bufferCss
+    bufferCss: message.bufferCss,
+    arrToString: message.arrToString
   });
   jQuery("#messages").append(html);
 
@@ -65,7 +66,7 @@ socket.on('newMessage', function (message) {
   // console.log("this thing" , messagesArray[messagesArray.length -1]);
   // console.log("this thing" , messagesArray[messagesArray.length -1].style.fontSize);
 
-  messagesArray[messagesArray.length -1].style.fontSize = message.bufferCss + "px"
+  messagesArray[messagesArray.length -1].style.paddingLeft = message.bufferCss + "px"
 
 
   // console.log("here", message);

@@ -63,7 +63,13 @@ button{
   border-radius: 25px;
   float: right;
   margin-top: 0.3vw;
-  width: 100%;
+  /* width: 100%; */
+  font-size: 3vw;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family:  arial narrow;
 }
 
 
@@ -103,6 +109,14 @@ animation-delay: 48s;
       overflow-x: hidden;
 }
 
+/* .binary_numbers{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+} */
 
 
 .fade-in {
@@ -119,6 +133,8 @@ animation-delay: 48s;
     -moz-animation-duration:1s;
     animation-duration:1s;
 }
+
+
 
 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
