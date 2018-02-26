@@ -37,7 +37,7 @@ request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, respo
 
 
 io.on("connection", (socket) => {
-  console.log("New connection from the client!");
+  // console.log("New connection from the client!");
 
     // socket.emit("newMessage", generateMessage("Admin", "Welcome to the chat!"));
     // socket.broadcast.emit("newMessage", generateMessage("Admin", "New User joined"));
@@ -67,15 +67,15 @@ io.on("connection", (socket) => {
       // console.log(finalChunk);
 
       var buf = conv(text, { in:'binary' })
-      console.log("BUFFER", buf);
+      // console.log("BUFFER", buf);
       var arr = Array.prototype.slice.call(buf, 0)
       arr = [...buf]
       arrToString = arr.join(" ");
-      console.log("this the arrToString", arrToString);
+      // console.log("this the arrToString", arrToString);
       console.log(arr);
 
       var arraySum = arr.reduce((a, b) => a + b, 0);
-      console.log("this is the arraySum", arraySum);
+      console.log("=", arraySum);
 
       var bufferCss = arraySum
 
@@ -90,7 +90,7 @@ io.on("connection", (socket) => {
     })
 
   socket.on("disconnect", () => {
-    console.log("New disconnection from the client!");
+    // console.log("New disconnection from the client!");
   })
 })
 
