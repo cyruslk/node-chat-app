@@ -59,7 +59,7 @@ socket.on('newMessage', function (message) {
 
   console.log(jQuery(".message__body").css('lineHeight', "120%"));
 
-  var messagesArray = jQuery(".message__body");
+  var messagesArray = jQuery(".message");
 
   // console.log("this thing" , messagesArray);
   // console.log("this thing" , messagesArray.length);
