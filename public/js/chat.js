@@ -3,7 +3,6 @@ var socket = io();
 var cookieEnabled = navigator.cookieEnabled.toString();
 var appVersion = navigator.appVersion.toString();
 var localStorageProfile = window.localStorage.profile;
-// console.log("this shit" , localStorageProfile);
 
 
 
@@ -79,44 +78,6 @@ socket.on('getTheUsersData', function (message) {
 
 });
 
-
-// socket.on('newLocationMessage', function (message) {
-//
-//
-//   var template = jQuery("#location-message-template").html();
-//   var formattedTime = moment(message.createdAt).format("h: mm a")
-//
-//   var html = Mustache.render(template, {
-//     from: message.from,
-//     url: message.url,
-//     createdAt: formattedTime
-//   });
-//
-//   jQuery("#messages").append(html);
-//   scrollToBottom();
-//
-// });
-
-
-
-//
-//
-// socket.on('newLocationMessage', function (message) {
-//
-//
-//   var template = jQuery("#location-message-template").html();
-//   var formattedTime = moment(message.createdAt).format("h: mm a")
-//
-//   var html = Mustache.render(template, {
-//     from: message.from,
-//     url: message.url,
-//     createdAt: formattedTime
-//   });
-//
-//   jQuery("#messages").append(html);
-//   scrollToBottom();
-//
-// });
 
 jQuery('#message-form').on('submit', function (e) {
   e.preventDefault();

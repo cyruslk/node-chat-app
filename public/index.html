@@ -26,22 +26,27 @@
       </div>
       <div id="third" class="chat_typed_info fade-in">
         <div class="from-me">
-          <p>Your IP Address is {{data.geoplugin_request}}</p>
+          <p>Your IP Address is {{data.query}}</p>
          </div>
       </div>
       <div id="fourth" class="chat_typed_info fade-in">
         <div class="from-me">
-          <p>And your coordonates are {{data.geoplugin_latitude}},{{data.geoplugin_longitude}}</p>
+          <p>And your coordonates are {{data.lat}},{{data.lon}}</p>
          </div>
       </div>
       <div id="fifth" class="chat_typed_info fade-in">
         <div class="from-me">
-          <p>Oh! So you live in the {{data.geoplugin_countryName}}?</p>
+          <p>Oh! So you live in the {{data.country}}?</p>
          </div>
       </div>
       <div id="sixth" class="chat_typed_info fade-in">
         <div class="from-me">
-          <p>Oh. Indeed! I see you're living in {{data.geoplugin_city}}.</p>
+          <p>Oh. Indeed! I see you're living in {{data.city}}.</p>
+         </div>
+      </div>
+      <div id="seventh" class="chat_typed_info fade-in">
+        <div class="from-me">
+          <p>Hmm, {{data.city}}, what a beautiful city.</p>
          </div>
       </div>
     </div>

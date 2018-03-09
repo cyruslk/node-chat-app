@@ -9,6 +9,8 @@ const {isRealString} = require("./utils/validation")
 var _ = require('lodash');
 var request = require("request");
 var conv = require('binstring');
+var merge = require('merge');
+var yelp = require('node-yelp-api');
 
 
 
@@ -21,10 +23,9 @@ var io = socketIO(server);
 io.on("connection", (socket) => {
   console.log("New connection from the client!");
 
-    request('http://www.geoplugin.net/json.gp?jsoncallback=', function (error, response, body) {
-      console.log('body:', body); // Print the HTML for the Google homepage.
+    request('http://ip-api.com/json', function (error, response, body) {
+      // console.log('body:', body); // Print the HTML for the Google homepage.
       var bodyObj = JSON.parse(body);
-      // console.log("??", bodyObj.geoplugin_request);
 
     socket.emit('getTheUsersData', {
       bodyObj: bodyObj
@@ -32,18 +33,6 @@ io.on("connection", (socket) => {
 
 
   });
-
-    // socket.emit("newMessage", generateMessage("Admin", "Welcome to the chat!"));
-    // socket.broadcast.emit("newMessage", generateMessage("Admin", "New User joined"));
-
-
-    // socket.on('join', (params, callback) => {
-    //   if (!isRealString(params.name) || !isRealString(params.room)) {
-    //     callback('Name and room name are required.');
-    //   }
-    //
-    //   callback();
-    // });
 
 
     socket.on("createMessage", (message, callback) => {

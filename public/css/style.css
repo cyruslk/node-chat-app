@@ -93,6 +93,12 @@ animation-delay: 48s;
 animation-delay: 60s;
 }
 
+#seventh{
+  -webkit-animation-delay: 72s;
+-moz-animation-delay: 72s;
+animation-delay: 72s;
+}
+
 
 
 
