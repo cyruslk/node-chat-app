@@ -9,8 +9,7 @@ const {isRealString} = require("./utils/validation")
 var _ = require('lodash');
 var request = require("request");
 var conv = require('binstring');
-var merge = require('merge');
-var yelp = require('node-yelp-api');
+
 
 
 
@@ -18,6 +17,20 @@ var app = express();
 var server = http.createServer(app);
 
 var io = socketIO(server);
+
+
+
+var options = {
+  consumer_key: 'consumer-key',
+  consumer_secret: 'consumer-secret',
+  token: 'token',
+  token_secret: 'token-secret',
+};
+
+var parameters = {
+  term: 'food',
+  location: 'Montreal',
+};
 
 
 io.on("connection", (socket) => {
