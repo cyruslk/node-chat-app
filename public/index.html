@@ -1,143 +1,25 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>IP chat</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-
-<body class="chat">
-
-  <script id="ip-info-template" type="text/template">
-
-
-    <div id="chat_typed_container">
-      <div id="first" class="chat_typed_info">
-        <div class="from-me">
-          <p>Hey there!</p>
-         </div>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <meta="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <title>Welcome to the chat</title>
+    </head>
+    <body class="centered-form">
+      <div >
+          <!-- Here, we are re_directing to the chat.html page when the button is clicked-->
+          <form action="/chat.html">
+          <div >
+            <input type="text" name="name" autofocus>
+          </div>
+          <div >
+            <input type="text" name="Room" autofocus>
+          </div>
+          <div >
+              <button>Join</button>
+          </div>
+          </form>
       </div>
-      <div id="second" class="chat_typed_info fade-in">
-        <div class="from-me">
-          <p>Welcome to the chat.</p>
-         </div>
-      </div>
-      <div id="third" class="chat_typed_info fade-in">
-        <div class="from-me">
-          <p>Your IP Address is {{data.query}}</p>
-         </div>
-      </div>
-      <div id="fourth" class="chat_typed_info fade-in">
-        <div class="from-me">
-          <p>And your coordonates are {{data.lat}},{{data.lon}}</p>
-         </div>
-      </div>
-      <div id="fifth" class="chat_typed_info fade-in">
-        <div class="from-me">
-          <p>Oh! So you live in the {{data.country}}?</p>
-         </div>
-      </div>
-      <div id="sixth" class="chat_typed_info fade-in">
-        <div class="from-me">
-          <p>Oh. Indeed! I see you're living in {{data.city}}.</p>
-         </div>
-      </div>
-      <div id="seventh" class="chat_typed_info fade-in">
-        <div class="from-me">
-          <p>Hmm, {{data.city}}, what a beautiful city.</p>
-         </div>
-      </div>
-    </div>
 
-  </script>
-
-
-    <div id="chat__sidebar">
-        <h3>People</h3>
-        <div id="users"></div>
-    </div>
-
-
-
-    <div class="chat__main">
-
-        <ol id="messages" class="chat__messages">
-        </ol>
-
-        <div class="chat__footer">
-            <form id="message-form">
-                <input name="message" type="text" placeholder="Message" autofocus autocomplete="off" />
-                <button>Send</button>
-            </form>
-            <button id="send-location">Send location</button>
-        </div>
-    </div>
-
-
-    <script id="popup_template" type="text/template">
-
-        <div id="chat_typed_container">
-            <div class="chat_typed_info">
-                <div class="from-me">
-                    <p>Hey there</p>
-                </div>
-            </div>
-            <div class="chat_typed_info">
-                <div class="from-me">
-                    <p>Welcome to the chat.</p>
-                </div>
-            </div>
-        </div>
-
-    </script>
-
-
-    <script id="message-template" type="text/template">
-
-
-        <li class="message">
-            <div class="message__title">
-                <h4>{{from}}</h4>
-                <span>{{createdAt}}</span>
-            </div>
-            <div class="message__body">
-                <p>{{text}}</p>
-                <!-- <p>{{buffer}}</p> -->
-
-            </div>
-
-
-        </li>
-    </script>
-
-
-
-
-
-    <script id="location-message-template" type="text/template">
-        <li class="message">
-            <div class="message__title">
-                <h4>{{from}}</h4>
-                <span>{{createdAt}}</span>
-            </div>
-            <div class="message__body">
-                <p>
-                    <a href="{{url}}" target="_blank">My current location</a>
-                </p>
-            </div>
-        </li>
-    </script>
-
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/libs/jquery-3.2.1.min.js"></script>
-    <script src="/js/libs/moment.js"></script>
-    <script src="/js/libs/mustache.js"></script>
-    <script src="/js/libs/deparam.js"></script>
-    <script src="/js/chat.js"></script>
-
-</body>
-
-</html>
+    </body>
+  </html>
