@@ -54,10 +54,6 @@ socket.on('newMessage', function (message) {
   scrollToBottom();
 
   console.log("here", message.buffer);
-
-  // console.log(jQuery(".message__body").css('color',  message.buffer));
-  // console.log("here", message);
-
 });
 
 
