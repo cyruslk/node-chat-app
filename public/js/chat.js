@@ -22,15 +22,19 @@ function scrollToBottom () {
 }
 
 socket.on('connect', function () {
+
+  //Adding the params function to parse the window.location.search
   var params = jQuery.deparam(window.location.search);
 
+  // Adding a callback to handle the error/value
   socket.emit('join', params, function (err) {
-    if (err) {
-      alert(err);
-      window.location.href = '/';
-    } else {
-      console.log('No error');
-    }
+      if (err) {
+        alert(err);
+        // Here, we're re_directing the user to the homepage.
+        window.location.href = '/';
+      } else {
+        console.log('No error');
+      }
   });
 });
 
